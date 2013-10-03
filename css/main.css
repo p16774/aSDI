@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+
+*********************
+Author: Nathan Wharry
+Title: Project 1 - Blood Glucose Reporting Tool - Stylesheet
+Term: aSDI 1310
+*********************
+
+*/
+
+html {
+	background: #000000;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-bacground-size: cover;
+	background-size: cover;
+}
+
