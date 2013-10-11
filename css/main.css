@@ -5,7 +5,7 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 1 - Blood Glucose Reporting Tool - Stylesheet
+Title: Project 2 - Blood Glucose Reporting Tool - Stylesheet
 Term: aSDI 1310
 *********************
 
@@ -13,6 +13,7 @@ Term: aSDI 1310
 
 html {
 	background: #000000;
+	color: #FFFFFF;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-bacground-size: cover;
