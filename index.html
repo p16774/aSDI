@@ -4,8 +4,8 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 2 - Blood Glucose Meter Reading Report Tool - Index page
-Term: aSDI - 1310
+Title: Project 1 - Video Game Wishlist - Index page
+Term: aSDI - 1311
 *********************
 
 -->
@@ -15,93 +15,55 @@ Term: aSDI - 1310
 <head>
 
 	<meta charset="utf-8">
-    <meta name="description" content="A small app designed to hold blood glucose meter readings and offer simple trending">
-    <meta name="keywords" content="blood glucose, blood sugar, sugar, diabetes, insulin, insulin pump, blood glucose meter, blood sugar meter, a1c readings, blood sugar trends">
+    <meta name="description" content="Application to store your video game wishlist and main details">
+    <meta name="keywords" content="video games, video game, wishlist, xbox, playstation, pc, mobile">
     <meta name="robot" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     
     <!--Additional Document Links-->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
     
-	<title>Blood Glucose Report Tool</title>
+	<title>Video Game Wishlist</title>
 
 </head>
 
 	<body>
     
-    	<section data-role="page" id="index" data-theme="a">
+    	<section data-role="page" id="home" data-theme="a">
         	<header>
-            	<h1 align="center">Blood Glucose Reporting</h1>
+            	<h1 align="center">The Wishlist</h1>
             </header>
-                
-                <p data-role="content" align="justify">This tool should be used to help keep track of your blood sugar and provide a mobile way of tracking your meter readings to help you keep control of your blood glucose levels. The use of this tool is for informational purposes only and should not be used as an alternative to talking with your doctor. By using this tool you agree to not hold Project3W responsible for any problems associated with using the information this application may provide in any other use other than for informational purposes.</p>
         
             <section id="mainForm">
-                <form action="#" id="mainButton" method="post" data-ajax="false">
-                    <input type="button" value="Enter Meter Reading" id="addButton">
-                </form>
+            
+            <!--content for the home page display-->
+
             </section>
             
             <footer data-position="fixed">
                 <nav data-role="navbar" data-id="navFooter">
                     <ul>
-                        <li><a href="#index" class="ui-btn-active">Home</a></li>
-                        <li><a href="#readings">Readings</a></li>
-                        <li><a href="#trends">Trends</a></li>
+                        <li><a href="#home" class="ui-btn-active">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#wishlist">Wishlist</a></li>
                     </ul>
                 </nav>
             </footer>
         </section>
         
-        <section data-role="page" id="readings" data-theme="a">
+        <section data-role="page" id="games" data-theme="a">
         
         	<header>
-            	<h1 align="center">Blood Glucose Reporting</h1>
+            	<h1 align="center">Add New Game</h1>
             </header>
         
         <div data-role="content">
         
-        	<p align="justify">Please enter your information below and click the ADD button to sumbit your reading.</p>
-            <br/>
-            <form action="#" id="addForm" method="post" data-ajax="false">
+        	<form method="post" action="#" id="addGame" name="addGame">
             
-            	<label for="readDate">Date:</label>
-                <input type="date" name="readDate" id="readDate" />
+            <!--content of add games form-->
             
-            	<label for="readType" class="ui-select">Reading Type:</label>
-                <select name="readType" id="readType">
-                	<option value="">--- Choose One ---</option>
-                	<option value="Before Meal">Before Meal</option>
-                    <option value="After Meal">After Meal</option>
-                    <option value="Other">Other</option>
-                </select>
-                
-                <label for="readOther">Other (please explain):</label>
-                <input type="text" name="readOther" id="readOther" />
-                
-                <label for="readTime" class="ui-select">Reading Time:</label>
-                <select name="readTime" id="readTime">
-                	<option value="">--- Choose One ---</option>
-                	<option value="Early Morning">Early Morning</option>
-                	<option value="Breakfast">Breakfast</option>
-                	<option value="Mid-Morning">Mid-Morning</option>
-                	<option value="Lunch">Lunch</option>
-                	<option value="Afternoon">Afternoon</option>
-                	<option value="Dinner">Dinner</option>
-                	<option value="Evening">Evening</option>
-                	<option value="Late Evening">Late Evening</option>
-                </select>
-                
-                <label for="readMeter">Blood Glucose Reading:</label>
-                <input type="number" name="readMeter" id="readMeter"/>
-                
-                <label for="readNotes">Additional Notes:</label>
-                <textarea name="readNotes" id="readNotes"></textarea>
-                <br />
-                <input type="button" name="addReading" id="addReading" value="Add Meter Reading" />
-                
-                
             </form>
             
         </div>
@@ -110,33 +72,41 @@ Term: aSDI - 1310
             <footer data-position="fixed">
                 <nav data-role="navbar" data-id="navFooter">
                     <ul>
-                        <li><a href="#index">Home</a></li>
-                        <li><a href="#readings" class="ui-btn-active">Readings</a></li>
-                        <li><a href="#trends">Trends</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games" class="ui-btn-active">Games</a></li>
+                        <li><a href="#wishlist">Wishlist</a></li>
                     </ul>
                 </nav>
             </footer>
         
         </section>
         
-        <section data-role="page" id="trends" data-theme="a">
+        <section data-role="page" id="wishlist" data-theme="a">
         
-        <p>Here 2</p>
+        	<header>
+            	<h1 align="center">Your Wishlist</h1>
+            </header>
         
+        <div data-role="content">
+        
+        <!--content for the display of user wishlist-->        
+            
+        </div>
+            
             <footer data-position="fixed">
                 <nav data-role="navbar" data-id="navFooter">
                     <ul>
-                        <li><a href="#index">Home</a></li>
-                        <li><a href="#readings">Readings</a></li>
-                        <li><a href="#trends" class="ui-btn-active">Trends</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#wishlist" class="ui-btn-active">Wishlist</a></li>
                     </ul>
                 </nav>
             </footer>
         
         </section>
 
-		<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
         
     </body>
