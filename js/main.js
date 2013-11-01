@@ -4,19 +4,19 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 2 - Blood Glucose Reporting Tool - Javascript
-Term: aSDI 1310
+Title: Project 1 - Video Games Wishlist - Javascript
+Term: aSDI 1311
 *********************
 
 */
 
-// Run content on page load only
-$('#addButton').on('click', function() {
+// content for the add games page
+$('#games').on('pageshow', function() {
 	
-	window.location='#readings'; // redirect page to the add a reading page
-	
+	// insert form building or form editing elements here	
 });
 
+<<<<<<< HEAD
 // content for the readings page
 $('#readings').on('pageshow', function() {
 	
@@ -114,6 +114,10 @@ $('#readings').on('pageshow', function() {
 		
 	
 	
+=======
+// content for the wishlist page
+$('#games').on('pageshow', function() {
+	
+	// insert display elements here	
+>>>>>>> master
 });
-
-// content for the trendss page

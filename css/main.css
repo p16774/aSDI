@@ -5,8 +5,8 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 2 - Blood Glucose Reporting Tool - Stylesheet
-Term: aSDI 1310
+Title: Project 1 - Video Game Wishlist - Stylesheet
+Term: aSDI 1311
 *********************
 
 */
@@ -18,5 +18,9 @@ html {
 	-moz-background-size: cover;
 	-o-bacground-size: cover;
 	background-size: cover;
+}
+
+body {
+	color: #FFFFFF;
 }
 
