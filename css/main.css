@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+
+*********************
+Author: Nathan Wharry
+Title: Project 1 - Video Game Wishlist - Stylesheet
+Term: aSDI 1311
+*********************
+
+*/
+
+html {
+	background: #000000;
+	color: #FFFFFF;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-bacground-size: cover;
+	background-size: cover;
+}
+
+body {
+	color: #FFFFFF;
+}
+
