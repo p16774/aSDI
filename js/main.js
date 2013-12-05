@@ -4,8 +4,8 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 1 - Video Games Wishlist - Javascript
-Term: aSDI 1311
+Title: Project 1 - D&D Character Roster - Javascript
+Term: aSDI 1312
 *********************
 
 */
