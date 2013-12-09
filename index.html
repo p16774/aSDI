@@ -123,13 +123,16 @@ Term: MiU 1308
         
         <form action="" method="post" id="charForm" data-ajax="false" data-role="listview" data-inset="true">
         
+        <ul id="errors"></ul>
+        <ul class="fade" id="information">
+        
                 
             <div data-role="fieldcontain">
                 <label for="char_name">Name: <span class="minitext">*required</span></label><input type="text" placeholder="enter new character name..." id="char_name" name="char_name"><br /><p style="font-size: 14px;" class="minitext">Ex: Conan or Conan the Barbarian</p>
             </div>
             
             <div data-role="fieldcontain" id="select_race">
-                <label for="char_race">Race: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Dwarf</p>            
+                <label for="char_race">Race: <span class="minitext">*required</span></label><p style="font-size: 14px;" class="minitext">Ex: Dwarf</p>            
             </div>
             
             <div data-role="fieldcontain">
@@ -145,7 +148,7 @@ Term: MiU 1308
             </div>
             
             <div data-role="fieldcontain" id="select_class">
-                <label for="char_class">Class: <span class="minitext">*required</span></label><br /><br /><p style="font-size: 14px;" class="minitext">Ex: Wizard</p>
+                <label for="char_class">Class: <span class="minitext">*required</span></label><p style="font-size: 14px;" class="minitext">Ex: Wizard</p>
             </div>
             
             <div data-role="fieldcontain">
@@ -174,7 +177,37 @@ Term: MiU 1308
         
     </div>
 
-</div>   
+</div>  
+
+
+<div data-role="page" id="news" data-theme="a">
+
+	<div data-role="header" id="newsHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
+                <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
+                
+            </ul>
+            
+        </div>
+        
+    </div>
+        
+    <img src="img/heading.png" alt="Heading Image" width="100%" />
+    
+    <div data-role="content">
+    
+    
+    </div>
+          
+</div>
 
 
 <div data-role="page" id="news" data-theme="a">
@@ -261,9 +294,8 @@ Term: MiU 1308
 
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/json.js"></script>
-    <script type="text/javascript" src="js/newmain.js"></script>
+    <script type="text/javascript" src="js/rebuild.js"></script>
 
     
 </body>

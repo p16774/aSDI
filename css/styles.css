@@ -23,6 +23,11 @@ body {
 	color: #FFFF8C;
 }
 
+.error {
+	border: 1px solid #FFFF00;
+}
+
+
 .separator {
 	width: 100%;
 	margin: 5px 0px;

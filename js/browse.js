@@ -9,9 +9,6 @@ Term: MiU 1308
 *********************
 
 */
-
-// Wait for DOM to fully load
-window.addEventListener("DOMContentLoaded", function() {
 	
 	// getElementById Function
 	function ge(x) {
@@ -410,12 +407,11 @@ window.addEventListener("DOMContentLoaded", function() {
 											
 			// turn our toggle controls off to display form
 			//toggleControls("off");
-			
+
 			// populate our data with the item to be edited
-			ge('char_name').value = item.char_name[1];
-			ge('char_race').value = item.char_race[1];
-			
-			
+			$("#char_name").val(item.char_name[1]);
+			$("#char_race").val(item.char_race[1]);
+						
 			var radios = document.forms[0].char_gen;
 			
 			// loop through to get selected radio button
@@ -436,15 +432,13 @@ window.addEventListener("DOMContentLoaded", function() {
 				
 			};
 
-			ge('char_class').value = item.char_class[1];
-			ge('char_age').value = item.char_age[1];
-			ge('char_desc').value = item.char_desc[1];
+			$("#char_class").val(item.char_class[1]);
+			$("#char_age").val(item.char_age[1]);
+			$("#char_desc").val(item.char_desc[1]);
 			
 			// refresh our elements
-			$('#add').page();
-			$('#char_race').select("refresh");	
-			$('#char_class').select("refresh");	
-			
+			$('#char_race').selectmenu("refresh");	
+			$('#char_class').selectmenu("refresh");			
 			
 			// change our submit button properties to edit data
 			//addChar.removeEventListener("click", valChar);
@@ -461,75 +455,184 @@ window.addEventListener("DOMContentLoaded", function() {
 	// pull our localStorage to sort properly
 	pullLocalStorage(display);
 	
-	selRace();
-	selClass();
-	
+
+// functions for the ADD page before it's created (for proper element styles)
+$('#add').on('pagebeforecreate', function() {
 	
 	// Create Select Element for Race Selection
 	function selRace() {
 		
 		// define needed variables		
-		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Gnomes", "Half-Elf", "Half-Orc", "Halfling"],
-			formTag = document.getElementsByTagName("form"),
-			selectLi = ge("select_race"),
-			makeSelect = document.createElement("select");
-			makeSelect.setAttribute("id", "char_race");
-			makeSelect.setAttribute("name", "char_race");
-			makeSelect.setAttribute("data-native-menu", "false");
-			
+		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Gnomes", "Half-Elf", "Half-Orc", "Halfling"];
+		
+		// create our select elements/attributes
+		$("#select_race").append("<select id='char_race'></select>");
+		$("#char_race").attr("name", "char_race");
+		$("#char_race").attr("data-native-menu", "false");
+
 		// Loop through races array and make our options
 		for(var i=0, j=races.length; i<j; i++) {
 			
-			var makeOption = document.createElement("option");
+			// set our option value
 			var optText = races[i];
 			
 			// Create our Option Tags
-			makeOption.setAttribute("value", optText);
-			makeOption.innerHTML = optText;
+			$("#char_race").append("<option value='"+optText+"'>"+optText+"</option>");
 			
-			// Attach Option into Select Element
-			makeSelect.appendChild(makeOption);
+		};	// end for loop to create option elements	
 			
-		};
-		
-		selectLi.appendChild(makeSelect);
-		
 	}; // end selRace function
 	
 	// Create Select Element for Class Selection
 	function selClass() {
 		
 		// define needed variables		
-		var classes = ["--Choose A Class--", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Warlord", "Wizard", "------", "Avenger", "Barbarian", "Bard", "Druid", "Invoker", "Shaman", "Sorcerer", "Warden", "------", "Ardent", "Battlemind", "Monk", "Psion", "Runepriest", "Seeker"],
-			formTag = document.getElementsByTagName("form"),
-			selectLi = ge("select_class"),
-			makeSelect = document.createElement("select");
-			makeSelect.setAttribute("id", "char_class");
-			makeSelect.setAttribute("name", "char_class");
-			makeSelect.setAttribute("data-native-menu", "false");
+		var classes = ["--Choose A Class--", "Cleric", "Fighter", "Paladin", "Ranger", "Rogue", "Warlock", "Warlord", "Wizard", "------", "Avenger", "Barbarian", "Bard", "Druid", "Invoker", "Shaman", "Sorcerer", "Warden", "------", "Ardent", "Battlemind", "Monk", "Psion", "Runepriest", "Seeker"];
+			
+			$("#select_class").append("<select id='char_class'></select>");
+			$("#char_class").attr("name", "char_class");
+			$("#char_class").attr("data-native-menu", "false");
 
 		// Loop through races array and make our options
 		for(var i=0, j=classes.length; i<j; i++) {
 			
-			var makeOption = document.createElement("option");
+			// set our option value
 			var optText = classes[i];
 			
 			// Create our Option Tags
-			makeOption.setAttribute("value", optText);
-			makeOption.innerHTML = optText;
+			$("#char_class").append("<option value='"+optText+"'>"+optText+"</option>");
 			
-			// Attach Option into Select Element
-			makeSelect.appendChild(makeOption);
+		};	// end for loop to create option elements	
+			
+	};
+	
+	// Run needed functions for display
+	selRace();
+	selClass();	
+	
+});
+
+
+$('#add').on('pageinit', function() {
+	
+	// refresh the elements after creation
+	//$('#select_race').selectmenu('refresh');
+	//$('#select_class').selectmenu('refresh');
+	
+	// create form submit link
+	$('#charSubmitBtn').on("click", function(e) {
+		
+		// prevent default click action in the form
+		e.preventDefault();
+						
+		// reset our error messages array
+		$('#errors').empty();
+		$('#char_name').removeClass("error");
+		$('#char_race').removeClass("error");
+		$('#char_class').removeClass("error");
+
+		// error messages
+		var errMessages = [];
+		
+		// Name Validation
+		if ($('#char_name').val() === "") {
+			
+			// name error message
+			var nameError = "Please enter a character name.";
+			$('#char_name').addClass("error");
+			errMessages.push(nameError);
+			
+		};
+
+		// Race Validation
+		if ($('#char_race').val() == "--Choose A Race--") {
+			
+			// race error message
+			var raceError = "Please select a valid race.";
+			$('#char_race').addClass("error");
+			errMessages.push(raceError);
 			
 		};
 		
-		selectLi.appendChild(makeSelect);
+		// Class Validation
+		if ($('#char_class').val() === "--Choose A Class--" || $('#char_class').val() === "------") {
+			
+			// class error message
+			var classError = "Please choose a character class.";
+			$('#char_class').addClass("error");
+			errMessages.push(classError);
+			
+		};
+				
+		// check for errors and display
+		if (errMessages.length >= 1) {
+						
+			// loop through array of error message in case there is more than 1
+			for(var i=0, j=errMessages.length; i<j; i++) {
+				
+				$('#errors').append("<li>"+errMessages[i]+"</li>");
+				
+			}; // end for loop to display all errors
+			
+			// stop form from doing anything if we have errors
+			return false;
+			
+		} else {
+			
+			// alert used for testing
+			// alert('form has validated');
+			
+			// run our store data function if field validate
+			storeChar(this.key); // this.key used for edit function
+			
+		};
 		
-	};
+		function storeChar(key) {
+					
+			// pull in our argument for editing characters
+			if (!key) {
+							
+				// create random number for unique id in local storage
+				var id = Math.floor(Math.random()*10000000);
+				var edit = false;
+				
+			} else {
+				
+				// use previous key to update character
+				var id = key;
+				var edit = true;
+				
+			};
+								
+			// gather our form fields and save our data
+			var item				= {};
+				item.char_name		= ["Name", $("#char_name").val()];
+				item.char_race		= ["Race", $("#char_race").val()];
+				item.char_gen		= ["Gender", $("input:radio[name=char_gen]:checked").val()];
+				item.char_class		= ["Class", $("#char_class").val()];
+				item.char_age		= ["Age", $("#char_age").val()];
+				item.char_desc		= ["Description", $("#char_desc").val()];
+												
+				// variablize our stringify
+				var itemData = JSON.stringify(item);
+										
+			// save our data into local storage
+			localStorage.setItem(id, itemData);
+			
+			// validation to change the alert message
+			if (edit === true) {
+				
+				alert("Character Updated Successfully!");
+				
+			} else {
+				
+				alert("New Character Created and Saved Successfully!");
+				
+			}; // close if statement for proper alert message
+			
+		}; // close storeChar function
+		
+	}); // close the click event function
+		
 	
-
-
-	// add listener events to all our clear database buttons	
-	//clearChar.addEventListener("click", deleteChar); // clear ALL local storage data
-
-}); // end Wait For Page to Load function
+}); // end the pageinit for the add page
