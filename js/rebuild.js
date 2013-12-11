@@ -203,12 +203,16 @@ $('#add').on('pageinit', function() {
 $("#news").on("pageinit", function() {
 	
 	// load xml data
-	$.get( "external/news.xml", function( data ) {
-		
-		// display data
-		alert( "Data Loaded: " + data );
-});
-	
+	$.ajax({
+	   url      : "external/news.xml",
+	   type     : "GET",
+	   dataType : "xml",
+	   success  : function(data, status) {
+		   
+		  console.log(status, data);
+		  
+	   }
+	});	
 	
 	
 });
