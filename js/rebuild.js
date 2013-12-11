@@ -207,7 +207,7 @@ $("#news").on("pageinit", function() {
 	$.ajax({
 	   url      : "external/news.xml",
 	   type     : "GET",
-	   dataType : "xml",
+	   dataType : "jsonp",
 	   success  : function(data, status) {
 		   	alert("yes I'm running");
 
