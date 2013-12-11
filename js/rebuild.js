@@ -202,7 +202,6 @@ $('#add').on('pageinit', function() {
 
 $("#news").on("pageinit", function() {
 	
-	alert("am I running");
 	
 	// load xml data
 	$.ajax({
@@ -210,7 +209,8 @@ $("#news").on("pageinit", function() {
 	   type     : "GET",
 	   dataType : "xml",
 	   success  : function(data, status) {
-		   
+		   	alert("am I running");
+
 		  console.log(status, data);
 		  
 	   }
