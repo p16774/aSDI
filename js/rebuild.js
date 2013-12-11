@@ -202,7 +202,7 @@ $('#add').on('pageinit', function() {
 
 $("#news").on("pageinit", function() {
 	
-	/*// load xml data
+	// load xml data
 	$.ajax({
 	   url      : "external/news.xml",
 	   type     : "GET",
@@ -212,7 +212,7 @@ $("#news").on("pageinit", function() {
 		  console.log(status, data);
 		  
 	   }
-	});*/	
+	});
 	
 	
 });
