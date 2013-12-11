@@ -199,3 +199,16 @@ $('#add').on('pageinit', function() {
 		
 	
 }); // end the pageinit for the add page
+
+$("#news").on("pageinit", function() {
+	
+	// load xml data
+	$.get( "external/news.xml", function( data ) {
+		
+		// display data
+		alert( "Data Loaded: " + data );
+});
+	
+	
+	
+});
