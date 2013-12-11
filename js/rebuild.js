@@ -209,7 +209,7 @@ $("#news").on("pageinit", function() {
 	   type     : "GET",
 	   dataType : "xml",
 	   success  : function(data, status) {
-		   	alert("am I running");
+		   	alert("yes I'm running");
 
 		  console.log(status, data);
 		  
