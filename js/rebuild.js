@@ -202,6 +202,8 @@ $('#add').on('pageinit', function() {
 
 $("#news").on("pageinit", function() {
 	
+	alert("am I running");
+	
 	// load xml data
 	$.ajax({
 	   url      : "external/news.xml",
