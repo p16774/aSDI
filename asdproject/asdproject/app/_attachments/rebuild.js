@@ -4,7 +4,7 @@
 
 *********************
 Author: Nathan Wharry
-Title: Project 2 - D&D Character Sheet - Javascript
+Title: Project 4 - D&D Character Sheet - Javascript
 Term: aSDI - 1312
 *********************
 
@@ -200,21 +200,33 @@ $('#add').on('pageinit', function() {
 	
 }); // end the pageinit for the add page
 
-$("#news").on("pageshow", function() {
-			   alert("am I running?");
-
-	// load xml data
-	$.ajax({
-	   url      : "external/news.xml",
-	   type     : "GET",
-	   dataType : "xml",
-	   success  : function(data, status) {
-		   
-		   
-		  console.log(status, data);
-		  
-	   }
-	});	
+$(document).on('pageinit', "#news", function() {
 	
+	$.couch.db("asdproject").view("dndcharsheet/name", {
+		
+		success: function(data) {
+		
+			// empty fields
+			$('#newsData').empty();
+		   		
+		   	// load our view
+	   		$.each(data.rows, function(index, character) {
+	   			
+	   			var charName = character.value.name;
+	   			var charRace = character.value.race;
+	   			var charClass = character.value.class;
+	   			var charGen = character.value.gender
+	   			
+	   			$('#newsData').append(
+	   				$('<li>').text(charName)
+	   			);
+	   		}); // close our view loading
+	   		
+	   		// refresh for jquery css
+	   		$('#newsData').listview('refresh');
+	   		
+	   	} // close our success call
 	
-});
+	});	// close our couch view call
+	
+}); // close our news page display call
