@@ -1,21 +1,16 @@
 function (doc) {
 	
-	/* NAME 
-	emit(doc.char_name[1], {
+	// NAME 
+	emit(doc._id, {
 	
-		"name":doc.char_name[1],
-		"race":doc.char_race[1],
-		"class":doc.char_class[1],
-		"gender":doc.char_gen[1]
-	});
-	*/
-	
-	emit(doc.char_gen[1], {
-	
-		"name":doc.char_name[1],
-		"race":doc.char_race[1],
-		"class":doc.char_class[1],
-		"gender":doc.char_gen[1]
+		"name":doc._id,
+		"race":doc.race,
+		"class":doc.class,
+		"age":doc.age,
+		"gender":doc.gen,
+		"desc":doc.desc,
+		"rev":doc._rev
+		
 	});
 
 };

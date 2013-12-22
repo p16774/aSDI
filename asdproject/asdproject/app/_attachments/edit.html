@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--
+
+*********************
+Author: Nathan Wharry
+Title: Project 4 - D&D Character Editor - Index page
+Term: aSDI - 1312
+*********************
+
+-->
+
+<html style="background-color: #000000;">
+
+<head>
+
+	<meta charset="utf-8">
+    <meta name="description" content="A small app to hold character information for Dungeons & Dragons games">
+    <meta name="keywords" content="D&D, character, characters, character sheet, dungeons and dragons, dungeons, dragons">
+    <meta name="robot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="cache-control" content="no-cache">
+    
+	<title>D&D Character Editor</title>
+
+</head>
+
+<body>
+
+<div data-role="page" id="edit" data-theme="a">
+
+	<div data-role="header" id="editHdr" data-id="dndsheet" data-position="fixed"> 
+    	
+        <div data-role="navbar">
+        
+            <ul>
+            
+                <li><a href="index.html#home" data-ajax="false" class="ui-btn-active" data-icon="home">Home</a></li>
+                <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
+                <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
+                
+            </ul>
+            
+        </div>
+            
+	</div>
+    
+    <div data-role="content">
+
+        <ul id="editChar" data-role="listview" data-inset="true" data-theme="a">
+            
+        </ul> 
+        
+    </div>
+        
+    <div data-role="footer"><h4> </h4></div>
+    
+</div>

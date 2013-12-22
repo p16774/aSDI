@@ -49,7 +49,7 @@ Term: aSDI - 1312
             
                 <li><a href="index.html#home" data-ajax="false" class="ui-btn-active" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
-                <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
                 <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
                 
@@ -94,7 +94,7 @@ Term: aSDI - 1312
         
     </div>
         
-    <div data-role="footer"><h4>Footer</h4></div>
+    <div data-role="footer"><h4> </h4></div>
     
 </div>
 
@@ -110,7 +110,7 @@ Term: aSDI - 1312
             
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" class="ui-btn-active" data-icon="plus">Add</a></li>
-                <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
                 <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" data-icon="info">About</a></li>
                 
@@ -128,7 +128,7 @@ Term: aSDI - 1312
             
         <!--Start Form Entry-->
         
-        <form action="" method="post" id="charForm" data-ajax="false" data-role="listview" data-inset="true">
+        <form action="" method="put" id="charForm" data-ajax="false" data-role="listview" data-inset="true">
         
         <ul id="errors"></ul>
         <ul class="fade" id="information">
@@ -187,9 +187,9 @@ Term: aSDI - 1312
 </div>  
 
 
-<div data-role="page" id="news" data-theme="a">
+<div data-role="page" id="disp" data-theme="a">
 
-	<div data-role="header" id="newsHdr" data-id="dndsheet" data-position="fixed"> 
+	<div data-role="header" id="dispHdr" data-id="dndsheet" data-position="fixed"> 
     	
         <div data-role="navbar">
         
@@ -197,7 +197,7 @@ Term: aSDI - 1312
             
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
-                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
                 <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
                 
@@ -211,12 +211,14 @@ Term: aSDI - 1312
     
     <div data-role="content">
     
+        <div id="charData" data-role="listview" data-inset="true" data-theme="a">
+            
+        </div>        
     
     </div>
           
 </div>
 
-
 <div data-role="page" id="news" data-theme="a">
 
 	<div data-role="header" id="newsHdr" data-id="dndsheet" data-position="fixed"> 
@@ -227,7 +229,7 @@ Term: aSDI - 1312
             
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
-                <li><a href="browse.html#name" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" class="ui-btn-active" data-icon="star">Display</a></li>
                 <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
                 
@@ -241,9 +243,6 @@ Term: aSDI - 1312
     
     <div data-role="content">
     
-        <ul id="newsData" data-role="listview" data-inset="true" data-theme="a">
-            
-        </ul>        
     
     </div>
           
@@ -260,7 +259,7 @@ Term: aSDI - 1312
             
                 <li><a href="index.html#home" data-ajax="false" data-icon="home">Home</a></li>
                 <li><a href="index.html#add" data-ajax="false" data-icon="plus">Add</a></li>
-                <li><a href="browse.html#name" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
+                <li><a href="index.html#disp" data-ajax="false" id="navDisp" data-icon="star">Display</a></li>
                 <li><a href="index.html#news" data-ajax="false" id="navSearch" data-icon="search">DnD News</a></li>
                 <li><a href="index.html#about" data-ajax="false" class="ui-btn-active" data-icon="info">About</a></li>
                 
@@ -277,8 +276,6 @@ Term: aSDI - 1312
         <ul data-role="listview">
         
         	<li><a href="#home">Go back Home</a></li>
-            <li><a href="../bronze/index.html" rel="external">Bronze App</a></li>
-            <li><a href="../gold/index.html">Gold App</a></li>
             <li><a href="http://github.com" rel="external">GitHub</a></li>
 		
         </ul>
@@ -288,11 +285,7 @@ Term: aSDI - 1312
     </div>
     
  </div>
- 
-
-
-
-    
+     
 </body>
 
 </html>

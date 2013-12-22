@@ -21,13 +21,13 @@ Term: aSDI - 1312
 	};
 
 // functions for the ADD page before it's created (for proper element styles)
-$('#add').on('pagebeforecreate', function() {
+$(document).on('pagebeforecreate', "#add", function() {
 	
 	// Create Select Element for Race Selection
 	function selRace() {
 		
 		// define needed variables		
-		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Gnomes", "Half-Elf", "Half-Orc", "Halfling"];
+		var races = ["--Choose A Race--", "Human", "Elf", "Dwarf", "Gnome", "Half-Elf", "Half-Orc", "Halfling"];
 		
 		// create our select elements/attributes
 		$("#select_race").append("<select id='char_race'></select>");
@@ -76,7 +76,7 @@ $('#add').on('pagebeforecreate', function() {
 	
 });
 
-$('#add').on('pageinit', function() {
+$(document).on('pageinit', "#add", function() {
 	
 	// refresh the elements after creation
 	//$('#select_race').selectmenu('refresh');
@@ -146,52 +146,31 @@ $('#add').on('pageinit', function() {
 			// alert('form has validated');
 			
 			// run our store data function if field validate
-			storeChar(this.key); // this.key used for edit function
+			storeChar(); 
 			
 		};
 		
-		function storeChar(key) {
-					
-			// pull in our argument for editing characters
-			if (!key) {
-							
-				// create random number for unique id in local storage
-				var id = Math.floor(Math.random()*10000000);
-				var edit = false;
-				
-			} else {
-				
-				// use previous key to update character
-				var id = key;
-				var edit = true;
-				
-			};
+		function storeChar() {
 								
 			// gather our form fields and save our data
-			var item				= {};
-				item.char_name		= ["Name", $("#char_name").val()];
-				item.char_race		= ["Race", $("#char_race").val()];
-				item.char_gen		= ["Gender", $("input:radio[name=char_gen]:checked").val()];
-				item.char_class		= ["Class", $("#char_class").val()];
-				item.char_age		= ["Age", $("#char_age").val()];
-				item.char_desc		= ["Description", $("#char_desc").val()];
-												
-				// variablize our stringify
-				var itemData = JSON.stringify(item);
-										
-			// save our data into local storage
-			localStorage.setItem(id, itemData);
+			var item = {
+				"_id": $("#char_name").val(),
+				"race": $("#char_race").val(),
+				"class": $("#char_class").val(),
+				"age": $("#char_age").val(),
+				"gender": $("input:radio[name=char_gen]:checked").val(),
+				"description": $("#char_desc").val()
+				}
 			
-			// validation to change the alert message
-			if (edit === true) {
-				
-				alert("Character Updated Successfully!");
-				
-			} else {
-				
-				alert("New Character Created and Saved Successfully!");
-				
-			}; // close if statement for proper alert message
+			// save our couch document
+			$.couch.db("asdproject").saveDoc(item, {
+				success: function(data) {
+					alert("Character successfully created!");
+				},
+				error: function(status) {
+					alert(status);
+				}
+			});
 			
 		}; // close storeChar function
 		
@@ -200,14 +179,14 @@ $('#add').on('pageinit', function() {
 	
 }); // end the pageinit for the add page
 
-$(document).on('pageinit', "#news", function() {
+$(document).on('pageinit', "#disp", function() {
 	
 	$.couch.db("asdproject").view("dndcharsheet/name", {
 		
 		success: function(data) {
 		
 			// empty fields
-			$('#newsData').empty();
+			$('#charData').empty();
 		   		
 		   	// load our view
 	   		$.each(data.rows, function(index, character) {
@@ -215,18 +194,155 @@ $(document).on('pageinit', "#news", function() {
 	   			var charName = character.value.name;
 	   			var charRace = character.value.race;
 	   			var charClass = character.value.class;
-	   			var charGen = character.value.gender
+	   			var charAge = character.value.age;
+	   			var charGen = character.value.gender;
+	   			var charDesc = character.value.desc;
+	   			var rev = character.value.rev;
 	   			
-	   			$('#newsData').append(
-	   				$('<li>').text(charName)
-	   			);
+	   			$('#charData').append(
+	   			
+	   				$('<li>').append(
+	   					$('<a>')
+	   						.attr("href", "edit.html?id="+charName)
+	   						.text(charName),
+	   					$('<a>')
+	   						.attr({
+	   							"href": "#del",
+	   							"id": charName,
+	   							"data-icon": "delete"
+	   						})
+	   				) // close append li
+	   				
+	   				
+	   				/******************/
+	   				
+	   				/* display won't refresh - this is pointless
+	   				$('<div></div>')
+	   					.attr({
+	   						"id": charName,
+	   						"data-role": "collapsible"
+	   					})
+	   					.append(
+	   						$('<h3></h3>').text(charName),
+	   						$('<ul></ul>')
+	   							.attr({
+	   								"id": "charUL",
+	   								"data-role": "listview",
+	   								"data-inset": "true"
+	   							}) // close .attr for <ul>
+	   							.append(
+	  								$('<li></li>')
+	  									.append(
+	  										$('<a></a>')
+	  											.attr("href", "#edit")
+	  											.append(
+	  												$('<h4></h4>').text(charName),
+	  												$('<p></p>').text(charRace),
+	  												$('<p></p>').text(charClass),
+	  												$('<p></p>').text(charAge),
+	  												$('<p></p>').text(charGen),
+	  												$('<p></p>').text(charDesc),
+	  												$('<p></p>')
+	  													.attr("class", "ui-li-aside")
+	  													.text("<strong>click to edit</strong>")
+	  											
+	  											), // close append for a
+	  										$('<a></a>')
+	  											.attr({
+	  												"href": "#del",
+	  												"data-icon": "delete"
+	  												}) // close attr for del a
+	  											
+	  									) // close append for li
+	  											
+	  							) // close append for ul	  									
+	  									
+	  					) // close the main div append */
+	   				
+	   			) // close our charData append values
+	   			
+	   		// add out click event for deleting documents
+	   		$("#"+charName).on("click", function(e) {
+		
+				// prevent default click action in the form
+				e.preventDefault();
+				
+				// set our variable for deletion
+				var doc = {
+					"_id": charName,
+					"_rev": rev
+				};
+				var ask = confirm("Are you sure you want to delete the character " + charName +"?");
+				
+				// delete our document
+				if (ask == true) {
+					
+					$.couch.db("asdproject").removeDoc(doc, {
+						success: function(data) {
+							alert("Character has been deleted successfully!");
+							window.location.assign("index.html");
+							return false;
+						},
+						error: function(status) {
+							alert(status);
+						}
+					});
+					
+				} else {
+					
+					//alert that our data has not been deleted
+					alert("Deletion Cancelled. Returning to Homepage.");
+					window.location.assign("index.html");
+					return false;
+					
+				};
+				
+			}); // close our click event on deletion.
+	   			
 	   		}); // close our view loading
 	   		
 	   		// refresh for jquery css
-	   		$('#newsData').listview('refresh');
+	   		$('#charData').listview('refresh');
 	   		
 	   	} // close our success call
 	
 	});	// close our couch view call
 	
-}); // close our news page display call
+	
+}); // close our display page display call
+
+$(document).on('pageinit', "#edit", function() {
+
+	// split url into parts
+	var urlData = $(this).data("url");
+	var urlParts = urlData.split('?');
+	var keyValue = urlParts[1].split('=');
+	var key = decodeURIComponent(keyValue[0]);
+	var value = decodeURIComponent(keyValue[1]);
+	
+	$.couch.db("asdproject").openDoc(value, {
+		
+		success: function(data) {
+		
+			// empty fields
+			$('#editChar').empty();
+		   		
+		   	// append our data
+	   			
+	   			$('#editChar').append(
+	   			
+	   				$('<h4>').text("Name: " + data._id),
+	   				$('<p>').html("Race: " + data.race + "</br>Class: " + data.class + "</br>Gender: " + data.gender + "</br>Age: " + data.age + "</br>Desc: " + data.description)
+	   				 
+	   			)
+			
+		}
+		
+	});
+
+
+});
+
+
+
+
